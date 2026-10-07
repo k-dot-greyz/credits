@@ -1,0 +1,9 @@
+id: pii-email
+name: Should fail
+kind: project
+status: idea
+summary: "Ping kaspars.greizis@gmail.com"
+verification:
+  status: self-reported
+  source: fixture
+visibility: public

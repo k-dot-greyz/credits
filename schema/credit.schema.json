@@ -1,0 +1,164 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://k-dot-greyz.github.io/credits/schema/credit.schema.json",
+  "title": "Credit record",
+  "description": "One credit in the greyZ ledger. Field names match JSON Resume (jsonresume.org) where they overlap: name, position, url, startDate, endDate, summary, highlights, keywords, roles, entity. GlitchWorks talent-schema alignment is opportunistic — do not block records on it.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "name", "kind", "status", "visibility", "verification"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Optional pointer to this schema for editor tooling."
+    },
+    "id": {
+      "type": "string",
+      "description": "Stable slug. Must match the filename stem (e.g. records/zenclip.yaml → zenclip).",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "minLength": 1
+    },
+    "name": {
+      "type": "string",
+      "description": "Display title. JSON Resume: projects[].name, work[].position when kind is employment (see also position).",
+      "minLength": 1
+    },
+    "kind": {
+      "type": "string",
+      "description": "Record class. Maps to JSON Resume sections on export (employment → work, project/asset/release → projects, publication → publications, talk → projects with type=talk, reference → references, client-engagement → work).",
+      "enum": [
+        "project",
+        "employment",
+        "client-engagement",
+        "asset",
+        "publication",
+        "talk",
+        "release",
+        "reference"
+      ]
+    },
+    "roles": {
+      "type": "array",
+      "description": "JSON Resume projects[].roles — roles held on this credit.",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "position": {
+      "type": "string",
+      "description": "JSON Resume work[].position. Prefer this for employment / client-engagement; roles[] for projects.",
+      "minLength": 1
+    },
+    "entity": {
+      "type": "string",
+      "description": "Org, client, or affiliation. JSON Resume: work[].name, projects[].entity.",
+      "minLength": 1
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "Primary public URL (JSON Resume work[].url / projects[].url)."
+    },
+    "startDate": {
+      "$ref": "#/$defs/iso8601",
+      "description": "JSON Resume startDate. Year, year-month, or full date."
+    },
+    "endDate": {
+      "$ref": "#/$defs/iso8601",
+      "description": "JSON Resume endDate. Omit if ongoing."
+    },
+    "status": {
+      "type": "string",
+      "description": "Lifecycle of the work itself, not of the git record.",
+      "enum": ["idea", "R&D", "in-development", "shipped", "archived"]
+    },
+    "summary": {
+      "type": "string",
+      "description": "JSON Resume work[].summary / publications[].summary. Export also copies this to projects[].description."
+    },
+    "highlights": {
+      "type": "array",
+      "description": "JSON Resume highlights — short verified bullets only.",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "keywords": {
+      "type": "array",
+      "description": "Skills/tags. JSON Resume projects[].keywords / skills[].keywords.",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "tech": {
+      "type": "array",
+      "description": "Tech stack (languages, tools, platforms). Not a JSON Resume field; folded into skills on export. Kept as a sibling of keywords so GlitchWorks talent records can map stack separately from topics.",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "location": {
+      "type": "string",
+      "description": "JSON Resume work[].location, e.g. Riga, Latvia.",
+      "minLength": 1
+    },
+    "evidence": {
+      "type": "array",
+      "description": "Supporting links. Each link has its own visibility so a public record can still redact a Linear id.",
+      "items": { "$ref": "#/$defs/evidenceLink" }
+    },
+    "verification": { "$ref": "#/$defs/verification" },
+    "visibility": { "$ref": "#/$defs/visibility" }
+  },
+  "$defs": {
+    "iso8601": {
+      "type": "string",
+      "description": "JSON Resume iso8601: YYYY, YYYY-MM, or YYYY-MM-DD.",
+      "pattern": "^([1-2][0-9]{3}(-(0[1-9]|1[0-2])(-(0[1-9]|[12][0-9]|3[01]))?)?)$"
+    },
+    "visibility": {
+      "type": "string",
+      "description": "public = safe to publish and to include in CV export. private-redacted = stub only; export omits it.",
+      "enum": ["public", "private-redacted"]
+    },
+    "verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "source"],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["verified", "self-reported", "needs-confirm"]
+        },
+        "source": {
+          "type": "string",
+          "description": "Where the fact was checked (public URL, named document). No private repo contents.",
+          "minLength": 1
+        }
+      }
+    },
+    "evidenceLink": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "visibility"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["repo", "pr", "issue", "linear", "url"]
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "id": {
+          "type": "string",
+          "description": "Linear issue/project id, PR number, or other tracker key when there is no public URL.",
+          "minLength": 1
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "visibility": { "$ref": "#/$defs/visibility" }
+      },
+      "anyOf": [
+        { "required": ["url"] },
+        { "required": ["id"] }
+      ]
+    }
+  }
+}

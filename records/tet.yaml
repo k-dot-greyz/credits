@@ -1,0 +1,19 @@
+$schema: ../schema/credit.schema.json
+id: tet
+name: Salesforce Developer
+kind: employment
+position: Salesforce Developer
+entity: Tet
+startDate: "2023-01"
+endDate: "2024-01"
+status: archived
+keywords:
+  - salesforce
+tech:
+  - Salesforce
+verification:
+  status: needs-confirm
+  source: >-
+    Accenture background-check correspondence cited in the 2026-10-07 CV
+    fact sheet ("Tet - 01/2023 to 01/2024"). Role, org, and dates only.
+visibility: public

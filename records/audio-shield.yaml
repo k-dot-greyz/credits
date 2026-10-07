@@ -1,0 +1,24 @@
+$schema: ../schema/credit.schema.json
+id: audio-shield
+name: audio-shield
+kind: project
+roles:
+  - Author
+url: https://github.com/k-dot-greyz/audio-shield
+status: in-development
+summary: >-
+  Tone generator for solfeggio, binaural, isochronic, and noise beds, written
+  out as seamless WAV loops. Public repo; not released.
+keywords:
+  - audio
+  - wav
+  - tone-generator
+evidence:
+  - type: repo
+    url: https://github.com/k-dot-greyz/audio-shield
+    label: k-dot-greyz/audio-shield
+    visibility: public
+verification:
+  status: verified
+  source: https://github.com/k-dot-greyz/audio-shield
+visibility: public
