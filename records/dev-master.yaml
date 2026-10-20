@@ -1,0 +1,10 @@
+$schema: ../schema/credit.schema.json
+id: dev-master
+name: dev-master
+kind: project
+status: in-development
+summary: Private project. Details redacted.
+verification:
+  status: self-reported
+  source: Owner catalogue; private repository, unpublished details omitted.
+visibility: private-redacted

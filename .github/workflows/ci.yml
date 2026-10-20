@@ -1,0 +1,38 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  records:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install
+        run: python -m pip install -e ".[dev]"
+
+      - name: Validate records
+        run: python -m credits validate
+
+      - name: PII check
+        run: python -m credits pii
+
+      - name: Tests
+        run: python -m pytest
+
+      - name: Build SQLite
+        run: python -m credits build --out dist/credits.sqlite
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: credits-db
+          path: dist/credits.sqlite

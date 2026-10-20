@@ -1,0 +1,11 @@
+id: pii-salary
+name: Should fail
+kind: employment
+position: Contractor
+entity: Example
+status: archived
+summary: "Day rate 450 EUR and salary $120000"
+verification:
+  status: self-reported
+  source: fixture
+visibility: public

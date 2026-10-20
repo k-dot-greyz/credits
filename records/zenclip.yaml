@@ -1,0 +1,34 @@
+$schema: ../schema/credit.schema.json
+id: zenclip
+name: zenClip
+kind: project
+roles:
+  - Author
+url: https://github.com/k-dot-greyz/zenClip
+status: in-development
+summary: >-
+  Rust WYSIWYG capture to a metadata-stripped PNG with SHA-256 content-addressed
+  ingest. CI is green. Not released.
+highlights:
+  - "Draft PR #2 on k-dot-greyz/zenClip (open)."
+keywords:
+  - rust
+  - capture
+  - ci
+tech:
+  - Rust
+  - GitHub Actions
+evidence:
+  - type: repo
+    url: https://github.com/k-dot-greyz/zenClip
+    label: k-dot-greyz/zenClip
+    visibility: public
+  - type: pr
+    url: https://github.com/k-dot-greyz/zenClip/pull/2
+    id: "2"
+    label: "PR #2"
+    visibility: public
+verification:
+  status: verified
+  source: https://github.com/k-dot-greyz/zenClip/pull/2
+visibility: public

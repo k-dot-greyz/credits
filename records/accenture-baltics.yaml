@@ -1,0 +1,20 @@
+$schema: ../schema/credit.schema.json
+id: accenture-baltics
+name: Senior Salesforce Developer
+kind: employment
+position: Senior Salesforce Developer
+entity: Accenture Baltics
+startDate: "2024-08-01"
+endDate: "2025-03-31"
+status: archived
+keywords:
+  - salesforce
+tech:
+  - Salesforce
+verification:
+  status: needs-confirm
+  source: >-
+    Job offer (start 1 Aug 2024) and mutual termination (last working day
+    31 Mar 2025), as cited in the 2026-10-07 CV fact sheet. Role, org, and
+    dates only.
+visibility: public

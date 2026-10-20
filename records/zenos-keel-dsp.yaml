@@ -1,0 +1,41 @@
+$schema: ../schema/credit.schema.json
+id: zenos-keel-dsp
+name: zenOS keel DSP
+kind: project
+roles:
+  - Author
+entity: zenOS
+url: https://github.com/k-dot-greyz/zenOS
+status: R&D
+summary: >-
+  Spec and scaffold for the zenOS keel DSP stack. Open PR adds keel blueprints,
+  compiling stubs, and a scalar biquad tick plus Sos cascade. Not released.
+highlights:
+  - "Open PR #80 on k-dot-greyz/zenOS (spec + scaffold)."
+  - Scalar biquad tick and Sos cascade in keel-iir.
+keywords:
+  - audio
+  - dsp
+  - rust
+  - biquad
+tech:
+  - Rust
+evidence:
+  - type: repo
+    url: https://github.com/k-dot-greyz/zenOS
+    label: k-dot-greyz/zenOS
+    visibility: public
+  - type: pr
+    url: https://github.com/k-dot-greyz/zenOS/pull/80
+    id: "80"
+    label: "PR #80"
+    visibility: public
+  - type: issue
+    url: https://github.com/k-dot-greyz/zenOS/issues/73
+    id: "73"
+    label: "issue #73"
+    visibility: public
+verification:
+  status: verified
+  source: https://github.com/k-dot-greyz/zenOS/pull/80
+visibility: public

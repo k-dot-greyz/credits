@@ -1,0 +1,19 @@
+$schema: ../schema/credit.schema.json
+id: cognizant
+name: Salesforce Developer
+kind: employment
+position: Salesforce Developer
+entity: Cognizant
+startDate: "2021-07"
+endDate: "2022-12"
+status: archived
+keywords:
+  - salesforce
+tech:
+  - Salesforce
+verification:
+  status: needs-confirm
+  source: >-
+    Accenture background-check correspondence cited in the 2026-10-07 CV
+    fact sheet ("Cognizant - 07/2021 to 12/2022"). Role, org, and dates only.
+visibility: public

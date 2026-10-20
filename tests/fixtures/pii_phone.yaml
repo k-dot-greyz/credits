@@ -1,0 +1,9 @@
+id: pii-phone
+name: Should fail
+kind: project
+status: R&D
+summary: "Call me at (+371) 28366168 please"
+verification:
+  status: self-reported
+  source: fixture
+visibility: public

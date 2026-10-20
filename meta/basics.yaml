@@ -1,0 +1,11 @@
+# Public identity for JSON Resume export. No email, phone, or street address.
+name: Kaspars Greizis
+label: Software engineer
+url: https://github.com/k-dot-greyz
+location:
+  city: Riga
+  countryCode: LV
+profiles:
+  - network: GitHub
+    username: k-dot-greyz
+    url: https://github.com/k-dot-greyz
